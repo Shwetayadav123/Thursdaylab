@@ -5,7 +5,7 @@
 
 import java.util.Scanner;
 
-public class Ouestion_1 {
+public class swapping {
 	int num1,num2,temp;//Instance variable.....
 	public static void main(String[] args) {
 		Ouestion_1 obj=new Ouestion_1();
