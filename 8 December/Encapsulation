@@ -1,0 +1,67 @@
+/*WAP to accept back name, AC NO, Name , Pin no , amount for D or C. End display the Details . AS Name, bank name,Final balance.
+*/
+
+
+public class enccap_demo  // encapsulation 
+{
+	private int ac_no; // private 
+	private String pass;
+	
+	public void set_ac_no(int ac) // method to set private acno 
+	{
+		ac_no=ac;
+	}
+	public void set_pass(String pa)
+	{
+		pass=pa;
+	}
+	
+	public int get_ac_no() // method to get that acno 
+	{
+		return ac_no;
+	}
+	
+	public String get_pass()
+	{
+		return pass;
+		
+	}
+
+}
+
+------------
+
+
+import java.util.Scanner;
+
+public class use_of_private extends enccap_demo // inheriting encccap_ demo
+{
+	Scanner sc=new Scanner(System.in); // user input 
+	int acno;
+	String pas;
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		use_of_private obj=new use_of_private(); // object creation 
+		obj.process(); // calling a function 
+	}
+	
+	public void process() // function for set and get acno and password 
+	{
+		System.out.println("Enter account number");
+		acno=sc.nextInt();
+		System.out.println("Enter your password");
+		pas=sc.next();
+		
+		set_ac_no(acno);
+		set_pass(pas);
+		
+		System.out.println("The Account no is ="+get_ac_no()+"And Password is ="+get_pass());
+		
+	}
+	
+
+}
+
+
+
