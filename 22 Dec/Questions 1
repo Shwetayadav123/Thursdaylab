@@ -11,6 +11,9 @@ String str;
  public static void main(String[] args) {
 	Message obj=new Message(" hiii i am shweta"); //message passing 
 	obj.start();
+        Message obj1=new Message(" hiii Frome shweta");   //message passing 
+	obj1.start();
+
 
 }
 
