@@ -1,0 +1,100 @@
+/*Write a java program using synchronised threads which demonstrates producer consumer concept producer consumer problem.
+ The producer consumer problem is the classics concurrency of a multi process  synchronization problem .it is also known
+ as bound buffer problem. The problem describes two processes the producer and the consumer  who share a common fixed size
+ buffer used as a queue . The produce generates a piece of data put it into the buffer and starts again*/
+
+import java.util.LinkedList;
+
+public class PC {
+
+	LinkedList<Integer> list = new LinkedList<>();
+    int capacity = 2;
+    public void produce() throws InterruptedException // creating a method for producer 
+    {
+        int value = 0;
+        while (true) {
+            synchronized (this)
+            {
+            	 while (list.size() == capacity) {
+                     wait();
+            	 }
+
+                 System.out.println("Producer produce"+ value);
+                 list.add(value++);
+                 notify();
+                 Thread.sleep(1000);
+
+           
+            }
+        }
+    }
+    
+    public void consume() throws InterruptedException // consume method for consume calculation
+    {
+        while (true) {
+            synchronized (this)
+            {
+                
+                while (list.size() == 0)
+                    wait();
+
+                int val = list.removeFirst();
+
+                System.out.println("Consumer consumed-"+ val);
+
+                notify();
+
+                Thread.sleep(1000);
+            }
+        }
+    }
+}
+
+---------
+package shweta ;
+
+public class Threadexample {
+
+	public static void main(String[] args) throws InterruptedException{
+		
+		 final PC pc = new PC();
+		 
+	        // Create producer thread
+	        Thread t1 = new Thread(new Runnable() {
+	            @Override
+	            public void run()                  
+	            {
+	                try {
+	                    pc.produce();
+	                }
+	                catch (InterruptedException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        });
+	 
+	        // Create consumer thread
+	        Thread t2 = new Thread(new Runnable() {
+	            @Override
+	            public void run()
+	            {
+	                try {
+	                    pc.consume();
+	                }
+	                catch (InterruptedException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        });
+	 
+	        // Start both threads
+	        t1.start();
+	        t2.start();
+	 
+	        // t1 finishes before t2
+	        t1.join();
+	        t2.join();
+
+	}
+
+}
