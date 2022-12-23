@@ -1,0 +1,42 @@
+/*Write a java program which will generate the threads to display 10 terms 
+of Fibonacci series to display 1 to 10 in reverse order*/
+package shweta;
+
+
+
+public class Question_3 extends Thread {
+	public void run() {
+	int a=0,b=1,num=10; // declaring a value 
+	System.out.print(a+" "+b);
+
+	
+	for(int i=2;i<=num;i++ ) { // loop start from 2 goes to 10 value of fibonacci 
+	   int s=a+b; // storing a value of a and b int s
+		a=b;  // swaping 
+		b=s;
+		System.out.print(" "+s); 
+	}
+	}
+
+}
+--------------
+
+package shweta;
+
+
+
+public class Question_3 extends Thread {
+	public void run() {
+	int a=0,b=1,num=10; // declaring a value 
+	System.out.print(a+" "+b);
+
+	
+	for(int i=2;i<=num;i++ ) { // loop start from 2 goes to 10 value of fibonacci 
+	   int s=a+b; // storing a value of a and b int s
+		a=b;  // swaping 
+		b=s;
+		System.out.print(" "+s); 
+	}
+	}
+
+}
